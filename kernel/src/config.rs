@@ -40,6 +40,12 @@ pub(crate) struct Config {
     /// into which SRAM addresses. This can be useful to debug whether the kernel could
     /// successfully load processes, and whether the allocated SRAM is as expected.
     pub(crate) debug_load_processes: bool,
+
+    /// Whether the kernel should output additional debug information on panics.
+    ///
+    /// If enabled, the kernel will include Process::print_full_process() and
+    /// Process::print_memory_map()
+    pub(crate) debug_panics: bool,
 }
 
 /// A unique instance of `Config` where compile-time configuration options are defined. These
@@ -47,4 +53,5 @@ pub(crate) struct Config {
 pub(crate) const CONFIG: Config = Config {
     trace_syscalls: false,
     debug_load_processes: false,
+    debug_panics: true,
 };
